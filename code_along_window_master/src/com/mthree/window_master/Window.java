@@ -16,19 +16,23 @@ public class Window {
     /**
      * The price per square foot of glass used by the Window
      */
-    public final static double GLASS_PRICE = 3.50;
+    public double GlassPrice;
     /**
      * The price per linear foot of trim used by the Window
      */
-    public final static double TRIM_PRICE = 2.25;
+    public double TrimPrice;
     /**
      * Constructs a new Window with a specified width and height in feet
      * @param w The width of the Window in feet
      * @param h The height of the Window in feet
+     * @param glassPrice The price per square foot of glass used by the window in USD
+     * @param trimPrice The price per linear foot of trim used by the window in USD
      */
-    public Window(float w, float h) {
+    public Window(float w, float h, float glassPrice, float trimPrice) {
         Width = w;
         Height = h;
+        GlassPrice = glassPrice;
+        TrimPrice = trimPrice;
     }
 
     /**
@@ -61,12 +65,18 @@ public class Window {
      * @return The price of the window in USD
      */
     public double CalculatePrice() {
-        return (GetArea() * GLASS_PRICE) + (GetPerimeter() * TRIM_PRICE);
+        return (GetArea() * GlassPrice) + (GetPerimeter() * TrimPrice);
     }
 
     @Override
     public String toString() {
-        return String.format("Window Width = %.2f\nWindowHeight = %.2f\nWindow Area = %.2f\nWindowPerimeter = %.2f\nWindow Cost = %.2f",
-                Width, Height, GetArea(), GetPerimeter(), CalculatePrice());
+        return String.format("Window Width = %.2f" +
+                        "\nWindowHeight = %.2f" +
+                        "\nWindow Area = %.2f" +
+                        "\nWindowPerimeter = %.2f" +
+                        "\nGlass Price = $%.2f" +
+                        "\nTrim Price = $%.2f" +
+                        "\nWindow Cost = %.2f",
+                Width, Height, GetArea(), GetPerimeter(), GlassPrice, TrimPrice, CalculatePrice());
     }
 }
