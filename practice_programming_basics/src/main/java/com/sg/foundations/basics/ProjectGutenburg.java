@@ -1,4 +1,4 @@
-package com.sg.foundations.basics.core;
+package com.sg.foundations.basics;
 
 public class ProjectGutenburg {
     public static void main(String[] args) {
